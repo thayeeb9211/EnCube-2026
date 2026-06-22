@@ -1,0 +1,184 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>DOO Helper</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            background-color: #f4f6f8;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            background: white;-->
+<!--            width: 420px;-->
+<!--            margin: 60px auto;-->
+<!--            padding: 25px;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 4px 10px rgba(0,0,0,0.1);-->
+<!--        }-->
+
+<!--        h2 {-->
+<!--            color: #333;-->
+<!--        }-->
+
+<!--        label {-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        input {-->
+<!--            margin: 6px 0;-->
+<!--        }-->
+
+<!--        button {-->
+<!--            margin: 10px 5px;-->
+<!--            padding: 10px 18px;-->
+<!--            background-color: #0078D4;-->
+<!--            color: white;-->
+<!--            border: none;-->
+<!--            border-radius: 5px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        button:hover {-->
+<!--            background-color: #005fa3;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="container">-->
+<!--    <h2>COO Helper</h2>-->
+
+<!--    <form method="POST">-->
+<!--        <label>Select Scenario:</label><br><br>-->
+
+<!--        <input type="radio" name="scenario" value="6" checked> Exceptions (Death/Divorce)<br>-->
+<!--        <input type="radio" name="scenario" value="1"> Lease A to Lease B<br>-->
+<!--        <input type="radio" name="scenario" value="2"> Lease/PPA to Residential<br>-->
+<!--        <input type="radio" name="scenario" value="3"> Residential to Lease<br>-->
+<!--        <input type="radio" name="scenario" value="4"> Site Misconfigured<br>-->
+<!--        <input type="radio" name="scenario" value="5"> Other Scenarios<br>-->
+<!--        <input type="radio" name="scenario" value="7"> Sold System<br>-->
+<!--        <input type="radio" name="scenario" value="8"> Payment Issues<br>-->
+<!--        <button type="submit">Get Steps</button><br>-->
+
+<!--        <input type="text" name="site_id" placeholder="Enter Site ID" required><br>-->
+<!--        <input type="text" name="case_id" placeholder="Enter Case ID" required><br>-->
+
+<!--        <button type="submit" name="action" value="email">Generate Email</button>-->
+<!--    </form>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <title>DOO / COO Helper</title>-->
+<!--  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--  <div class="container">-->
+<!--    <h1>⚙️ DOO / COO Helper</h1>-->
+<!--    <p class="sub-text">Select a scenario and generate the process or email template.</p>-->
+
+<!--    <form method="POST">-->
+<!--      <label for="scenario">Select Scenario:</label>-->
+<!--      <select name="scenario" required>-->
+<!--        <option disabled selected>&#45;&#45; Choose an Option &#45;&#45;</option>-->
+<!--        <option value="1">Lease A → Lease B</option>-->
+<!--        <option value="2">Lease/PPA → Residential</option>-->
+<!--        <option value="3">Residential → Lease</option>-->
+<!--        <option value="4">Site Misconfigured</option>-->
+<!--        <option value="5">Other Scenarios</option>-->
+<!--        <option value="6">Exceptions (Death/Divorce/Family)</option>-->
+<!--        <option value="7">Sold System / Remove Owner</option>-->
+<!--        <option value="8">Payment Issues</option>-->
+<!--      </select>-->
+
+<!--      <div class="input-group">-->
+<!--        <label>Site ID:</label>-->
+<!--        <input type="text" name="site_id" placeholder="Enter Site ID">-->
+<!--      </div>-->
+
+<!--      <div class="input-group">-->
+<!--        <label>Case ID:</label>-->
+<!--        <input type="text" name="case_id" placeholder="Enter Case ID">-->
+<!--      </div>-->
+
+<!--      <div class="button-group">-->
+<!--        <button type="submit" name="action" value="details">View Process</button>-->
+<!--        <button type="submit" name="action" value="email" class="secondary">Generate Email</button>-->
+<!--      </div>-->
+<!--    </form>-->
+
+<!--  </div>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOO / COO Helper</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+  <h1>⚙️ DOO / COO Helper</h1>
+  <p class="sub-text">Select a scenario and view the process.</p>
+
+  <form method="POST">
+    <label>Select Scenario:</label>
+    <select name="scenario" required>
+      <option disabled selected>-- Choose an Option --</option>
+      <option value="1">1. Lease A → Lease B</option>
+      <option value="2">2. Lease/PPA → Residential</option>
+      <option value="3">3. Site Misconfigured</option>
+      <option value="4">4. Other Scenarios</option>
+      <option value="5">5. Exceptions (Death / Divorce / Family / Commercial Changes)</option>
+      <option value="6">6. Sold System / Remove Owner</option>
+      <option value="7">7. Payment Issues</option>
+    </select>
+
+    <div class="button-group">
+      <button type="submit" name="action" value="details">
+        View Process
+      </button>
+    </div>
+  </form>
+</div>
+
+<button class="dark-toggle" onclick="toggleDark()">🌙</button>
+
+<script>
+function toggleDark() {
+  document.body.classList.toggle("dark");
+
+  // ✅ Save preference
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+}
+
+// ✅ Apply saved theme on load
+window.onload = function () {
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+};
+</script>
+
+</body>
+</html>
