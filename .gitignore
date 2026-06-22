@@ -1,0 +1,7 @@
+# EnCube build/update files
+latest.zip
+temp-update/
+*.log
+.gemini/
+.idea/
+.vscode/
