@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
-	"name": "EnCube 2026 v1.0.1",
-	"version": "1.0.1",
+	"name": "EnCube 2026 v1",
+	"version": "1.0.0",
 	"description": "EnCube 2026 V1 created and designed by Mohammed Thayeeb Shariff (2026)",
 	"permissions": [
 		"tabs",
